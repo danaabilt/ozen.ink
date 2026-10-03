@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
+<script>document.documentElement.classList.add("js")</script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -205,6 +206,175 @@ footer{padding:44px 0 52px;text-align:left;color:var(--muted);font-size:14px}
 footer .fb{font-family:var(--display);font-weight:700;color:var(--ink);font-size:22px;letter-spacing:-.02em}
 footer .fb .dot{color:var(--gold)}
 footer .desc{margin-top:8px}
+
+/* ───────── depth layer: light, elevation, product on stage ───────── */
+:root{
+  --sh-1:0 1px 2px rgba(20,35,31,.05),0 10px 28px -10px rgba(20,35,31,.16);
+  --sh-2:0 2px 6px rgba(20,35,31,.07),0 30px 70px -24px rgba(11,94,93,.42);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body{background:
+  radial-gradient(900px 520px at 88% 1500px,rgba(14,124,123,.07),transparent 70%),
+  radial-gradient(800px 480px at 4% 3100px,rgba(192,138,45,.08),transparent 70%),
+  var(--paper)}
+
+/* hero light */
+.hero{background:
+  radial-gradient(760px 520px at 78% 38%,rgba(31,163,160,.34),transparent 68%),
+  radial-gradient(520px 380px at 96% 92%,rgba(227,177,88,.16),transparent 70%),
+  radial-gradient(600px 420px at 8% 108%,rgba(14,124,123,.22),transparent 70%),
+  var(--ink);padding:56px 0 96px}
+.hero::after,.eco::after,.contact::after,#status .stats::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.16;mix-blend-mode:soft-light;pointer-events:none;border-radius:inherit}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:36px}
+.hero .kicker{font-size:12.5px;background:rgba(255,255,255,.05);backdrop-filter:blur(8px)}
+.hero h1{text-shadow:0 18px 60px rgba(79,196,192,.25)}
+.btn-primary{box-shadow:0 10px 30px -8px rgba(79,196,192,.55)}
+.btn-ghost{background:rgba(255,255,255,.04);backdrop-filter:blur(6px)}
+
+/* stage */
+.stage{position:relative;height:590px;perspective:1300px;--mx:0;--my:0}
+.layer{position:absolute;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.l-plane{right:-150px;top:6px;width:700px;transform:translate3d(calc(var(--mx)*-14px),calc(var(--my)*-10px),0)}
+.plane{transform:rotateX(54deg) rotateZ(-18deg);transform-style:preserve-3d;border-radius:36px;
+  background:linear-gradient(160deg,#17403c 0%,#0f2b28 55%,#0c211e 100%);
+  border:1px solid rgba(127,209,207,.28);
+  box-shadow:0 2px 0 rgba(127,209,207,.25) inset,26px 46px 0 -6px #091816,60px 110px 120px rgba(0,0,0,.55),0 0 120px rgba(31,163,160,.25)}
+.plane svg{display:block;width:100%;height:auto;overflow:visible;border-radius:36px}
+.river{stroke:#1FA3A0;stroke-width:30;opacity:.5;filter:url(#rglow)}
+.river-core{stroke:#9FE8E4;stroke-width:3.5}
+.river-flow{fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.03 .22;opacity:0;animation:current 5.5s 2.6s linear infinite}
+@keyframes current{0%{stroke-dashoffset:1;opacity:.85}100%{stroke-dashoffset:0;opacity:.85}}
+.cdot{fill:#FBFAF7}
+#cdots{filter:url(#dglow)}
+.gridline{stroke:rgba(127,209,207,.11);stroke-width:1}
+
+.l-phone{left:0;bottom:-34px;transform:translate3d(calc(var(--mx)*22px),calc(var(--my)*16px),0);z-index:3}
+.phone{width:262px;border-radius:40px;padding:9px;background:linear-gradient(150deg,#2c3d39,#0c1513);
+  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 50px 90px -20px rgba(0,0,0,.75),0 0 70px rgba(79,196,192,.22);
+  transform:rotateY(13deg) rotateX(3deg) rotateZ(-2deg);animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{50%{transform:rotateY(13deg) rotateX(3deg) rotateZ(-2deg) translateY(-10px)}}
+.screen{border-radius:32px;overflow:hidden;background:#EEF3F1;color:var(--ink);font-size:12.5px;line-height:1.35}
+.tg-top{display:flex;align-items:center;gap:9px;padding:13px 13px 11px;background:#fff;border-bottom:1px solid #e4e9e7}
+.tg-av{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:9.5px}
+.tg-name{font-weight:600;font-size:13px}
+.tg-sub{font-size:11px;color:#6b7a76}
+.chat{padding:12px 11px 14px;display:flex;flex-direction:column;gap:7px}
+.bub{max-width:84%;padding:8px 11px;border-radius:15px;background:#fff;box-shadow:0 1px 1px rgba(20,35,31,.08);align-self:flex-start;border-bottom-left-radius:5px}
+.bub.me{align-self:flex-end;background:var(--teal);color:#fff;border-radius:15px;border-bottom-right-radius:5px}
+.picks{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+.picks span.pk{background:var(--teal);color:#fff;border-radius:12px;padding:5px 9px;font-size:11.5px;font-weight:500}
+.ccard{background:#fff;border-radius:16px;padding:11px;box-shadow:0 8px 20px -8px rgba(20,35,31,.28);border:1px solid #e4e9e7}
+.ccard .ct{font-weight:600;font-size:13px}
+.ccard .cs{color:#6b7a76;font-size:11.5px;margin-top:2px}
+.ccard .st{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:10.5px;font-weight:600;color:#6a5a2e;background:var(--gold-soft);border-radius:10px;padding:4px 8px}
+.ccard .st i{width:9px;height:9px;border-radius:50%;border:1.5px dashed #6a5a2e}
+.ccard .acts{display:flex;gap:6px;margin-top:10px}
+.ccard .acts span.a{flex:1;text-align:center;border-radius:10px;padding:7px 0;font-weight:600;font-size:11.5px;background:var(--teal-soft);color:var(--teal-deep)}
+.ccard .acts span.a.p{background:var(--teal);color:#fff}
+.ex{font-size:10px;color:#8b9794;text-align:center;padding:0 0 10px}
+
+.dchip{position:absolute;z-index:2;display:flex;align-items:baseline;gap:8px;padding:9px 14px;border-radius:16px;white-space:nowrap;
+  background:rgba(20,35,31,.55);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 18px 40px -14px rgba(0,0,0,.7);font-size:13px;color:#d9e4e1;
+  transform:translate3d(calc(var(--mx)*34px),calc(var(--my)*24px),0);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dchip b{font-family:var(--display);font-weight:600;font-size:21px;color:var(--gold-lit);letter-spacing:-.02em}
+.d1{right:2%;top:13%}.d2{right:40%;top:2%}.d3{right:0;top:63%}.d4{right:36%;top:80%}
+.rchip{position:absolute;z-index:2;right:20%;top:39%;font-size:13px;font-style:italic;color:#9FE8E4;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.map-cap{margin-top:34px;margin-left:auto;max-width:46ch}
+@media(max-width:940px){
+  .hero-grid{grid-template-columns:1fr}
+  .stage{height:520px;margin:0 -8px}
+  .l-plane{right:-170px;width:600px;top:0}
+  .phone{width:226px}.l-phone{left:0;bottom:-20px}
+  .d1{right:0;top:10%}.d2{right:auto;left:36%;top:0}.d3{right:0;top:60%}.d4{right:2%;top:84%}
+  .rchip{right:10%;top:36%}
+  .map-cap{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){.phone{animation:none}.river-flow{animation:none;opacity:0}.layer,.dchip{transition:none}}
+
+/* product: cards with a working picture each */
+.cards3{border-top:0;gap:22px}
+.pcard,.pcard + .pcard,.pcard:last-child{padding:0 0 28px;border:1px solid var(--line);border-radius:26px;background:#fff;box-shadow:var(--sh-1);overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.pcard:hover{transform:translateY(-6px);box-shadow:var(--sh-2)}
+.pcard > *{margin-left:26px;margin-right:26px}
+.pcard > .pvis{margin:0 0 24px;height:196px;position:relative;overflow:hidden;display:grid;place-items:center}
+.pv-bot{background:radial-gradient(300px 200px at 70% 10%,rgba(79,196,192,.4),transparent 70%),var(--ink)}
+.steps4{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:78%}
+.steps4 div{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#e6efed;font-size:13px;font-weight:500;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.steps4 div i{font-style:normal;font-family:var(--display);font-size:11px;font-weight:600;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--teal-lit);color:var(--ink);flex-shrink:0}
+.steps4 div:last-child{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.steps4 div:last-child i{background:var(--gold-lit)}
+.pv-partner{background:linear-gradient(160deg,#dcecea,#eef5f4)}
+.mini{width:74%;background:#fff;border-radius:18px;padding:16px;box-shadow:0 24px 40px -18px rgba(11,94,93,.5),0 1px 0 #fff inset;transform:rotate(-2.5deg)}
+.mini .ln{height:9px;border-radius:5px;background:#dfe7e5;margin-bottom:8px}
+.mini .ln.t{width:62%;height:12px;background:var(--ink)}
+.mini .ln.s{width:84%}.mini .ln.x{width:46%}
+.mini .ok{display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:7px 11px;border-radius:11px;background:var(--teal);color:#fff;font-size:12px;font-weight:600}
+.mini .ok i{width:14px;height:14px;border-radius:50%;background:var(--gold-lit);position:relative}
+.mini .ok i::after{content:"";position:absolute;left:4.5px;top:2.5px;width:3.5px;height:6.5px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.pv-bridge{background:radial-gradient(280px 180px at 20% 0%,rgba(227,177,88,.28),transparent 70%),#0f2b28}
+.bars{display:flex;align-items:flex-end;gap:14px;height:132px;width:76%}
+.bars div{flex:1;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,var(--teal-lit),#17766f);position:relative;box-shadow:0 14px 26px -10px rgba(0,0,0,.6)}
+.bars div:first-child{background:linear-gradient(180deg,var(--gold-lit),#a8741f)}
+.bars div b{position:absolute;top:-22px;left:0;right:0;text-align:center;font-family:var(--display);font-size:13px;font-weight:600;color:#fff}
+.pvcap{position:absolute;left:0;right:0;bottom:9px;text-align:center;font-size:11px;color:#a9bbb7}
+@media(max-width:860px){.pcard,.pcard + .pcard{border-bottom:1px solid var(--line)}}
+
+.principle{text-shadow:none}
+.vgrid{box-shadow:var(--sh-2);border-color:transparent;background:#fff}
+.vcard.cand{background:#fff}
+.vcard.ver{background:linear-gradient(150deg,#12918f,var(--teal-deep))}
+
+/* ecosystem panel */
+.eco{position:relative;overflow:hidden;box-shadow:var(--sh-2);background:
+  radial-gradient(520px 340px at 92% 0%,rgba(79,196,192,.3),transparent 70%),
+  radial-gradient(420px 300px at 0% 100%,rgba(227,177,88,.16),transparent 70%),var(--ink)}
+.eco > *{position:relative;z-index:1}
+.eco-two .box{backdrop-filter:blur(8px);box-shadow:0 20px 50px -24px rgba(0,0,0,.7)}
+.eco-two .box.next{position:relative;overflow:hidden;background:linear-gradient(150deg,#12918f,var(--teal-deep));border-color:rgba(255,255,255,.2)}
+.eco-two .box.next::before{content:"";position:absolute;right:-46px;bottom:-56px;width:230px;height:230px;opacity:.28;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpolygon points='100,10 178,55 178,145 100,190 22,145 22,55'/%3E%3Cpolygon points='100,40 152,70 152,130 100,160 48,130 48,70'/%3E%3Cpolygon points='100,70 126,85 126,115 100,130 74,115 74,85'/%3E%3Cpath d='M100 10V190M22 55l156 90M178 55L22 145'/%3E%3C/svg%3E") center/contain no-repeat}
+.eco-two .box.next > *{position:relative}
+.demo-link{box-shadow:0 12px 30px -10px rgba(0,0,0,.55)}
+
+/* stats on a lit panel */
+#status .stats{position:relative;overflow:hidden;border-radius:28px;padding:40px 40px 14px;gap:0 36px;box-shadow:var(--sh-2);background:
+  radial-gradient(460px 280px at 12% 0%,rgba(79,196,192,.32),transparent 70%),
+  radial-gradient(380px 260px at 100% 100%,rgba(227,177,88,.18),transparent 70%),var(--ink)}
+#status .stat{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.16)}
+#status .stat-num{background:linear-gradient(180deg,#fff 10%,var(--teal-lit));-webkit-background-clip:text;background-clip:text;color:transparent}
+#status .stat-lbl{color:#b9c7c3}
+@media(max-width:700px){#status .stats{padding:26px 22px 6px;grid-template-columns:1fr 1fr}}
+
+/* path nodes glow */
+.path li::before{box-shadow:0 0 0 6px rgba(14,124,123,.12)}
+.path li.next::before{box-shadow:0 0 0 6px rgba(192,138,45,.14)}
+
+/* people, join, beyond: lifted cards */
+.team{gap:22px}
+.person{border:1px solid var(--line);border-radius:26px;background:#fff;padding:32px;box-shadow:var(--sh-1);position:relative;overflow:hidden}
+.person::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--teal),var(--teal-lit),var(--gold-lit))}
+.join-grid{gap:22px}
+.jcard{border:1px solid var(--line);border-radius:24px;background:#fff;padding:28px;box-shadow:var(--sh-1);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.jcard:hover{transform:translateY(-5px);box-shadow:var(--sh-2)}
+.bgrid{gap:22px}
+.bcard{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.75);padding:26px 28px;box-shadow:var(--sh-1)}
+
+.contact{position:relative;overflow:hidden;box-shadow:var(--sh-2);background:
+  radial-gradient(520px 360px at 100% 0%,rgba(159,232,228,.35),transparent 70%),
+  radial-gradient(420px 300px at 0% 110%,rgba(227,177,88,.28),transparent 70%),
+  linear-gradient(150deg,#109492,var(--teal-deep))}
+.contact > *{position:relative;z-index:1}
+.clist a{backdrop-filter:blur(8px);box-shadow:0 12px 26px -14px rgba(0,0,0,.5)}
+
+.pcard > h3{margin:10px 26px 14px}
+.card-cta a,.demo-link{padding-top:11px;padding-bottom:11px;line-height:1.3}
+/* one quiet rise as blocks enter */
+html.js .rise{opacity:0;transform:translateY(22px)}
+html.js .rise.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+html.js .pcard.rise.in:hover{transform:translateY(-6px)}
+html.js .jcard.rise.in:hover{transform:translateY(-5px)}
+@media(prefers-reduced-motion:reduce){html.js .rise{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -251,17 +421,55 @@ footer .desc{margin-top:8px}
     </div>
    </div>
    <div class="hero-map">
-    <div class="map-frame">
-      <svg viewBox="0 0 520 440" role="img" aria-label="Schematic of Astana: the Esil river and 134 mapped education centers in four districts">
-        <path class="river" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
-        <path class="river-core" pathLength="1" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
-        <g id="cdots"></g>
-      </svg>
-      <div class="mlabel" style="left:68%;top:-2%"><b>24</b><span class="en">Almaty district</span><span class="ru">Алматинский район</span><span class="kz">Алматы ауданы</span></div>
-      <div class="mlabel" style="left:6%;top:-2%"><b>17</b><span class="en">Saryarka and Baykonur</span><span class="ru">Сарыарка и Байконур</span><span class="kz">Сарыарқа мен Байқоңыр</span></div>
-      <div class="mlabel" style="left:40%;top:93%"><b>82</b><span class="en">Esil district</span><span class="ru">район Есиль</span><span class="kz">Есіл ауданы</span></div>
-      <div class="mlabel" style="left:0%;top:90%"><b>11</b><span class="en">Nura district</span><span class="ru">район Нура</span><span class="kz">Нұра ауданы</span></div>
-      <div class="mriver" style="left:40%;top:36%"><span class="en">Esil river</span><span class="ru">река Есиль</span><span class="kz">Есіл өзені</span></div>
+    <div class="stage" id="stage">
+      <div class="layer l-plane">
+        <div class="plane">
+          <svg viewBox="0 0 520 440" role="img" aria-label="Schematic of Astana: the Esil river and 134 mapped education centers in four districts">
+            <defs>
+              <filter id="rglow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
+              <filter id="dglow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <pattern id="pgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path class="gridline" d="M40 0H0V40" fill="none"/></pattern>
+              <clipPath id="pclip"><rect width="520" height="440" rx="27"/></clipPath>
+            </defs>
+            <g clip-path="url(#pclip)">
+              <rect width="520" height="440" fill="url(#pgrid)"/>
+              <path class="river" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
+              <path class="river-core" pathLength="1" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
+              <path class="river-flow" pathLength="1" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
+              <g id="cdots"></g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="dchip d1"><b>24</b><span class="en">Almaty district</span><span class="ru">Алматинский</span><span class="kz">Алматы ауданы</span></div>
+      <div class="dchip d2"><b>17</b><span class="en">Saryarka, Baykonur</span><span class="ru">Сарыарка, Байконур</span><span class="kz">Сарыарқа, Байқоңыр</span></div>
+      <div class="dchip d3"><b>82</b><span class="en">Esil district</span><span class="ru">Есиль</span><span class="kz">Есіл ауданы</span></div>
+      <div class="dchip d4"><b>11</b><span class="en">Nura district</span><span class="ru">Нура</span><span class="kz">Нұра ауданы</span></div>
+      <div class="rchip"><span class="en">Esil river</span><span class="ru">река Есиль</span><span class="kz">Есіл өзені</span></div>
+      <div class="layer l-phone" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="tg-top"><div class="tg-av">OZI</div><div><div class="tg-name">OZI Bot</div><div class="tg-sub"><span class="en">bot</span><span class="ru">бот</span><span class="kz">бот</span></div></div></div>
+            <div class="chat">
+              <div class="bub"><span class="en">What are we looking for?</span><span class="ru">Что ищем?</span><span class="kz">Не іздейміз?</span></div>
+              <div class="picks">
+                <span class="pk"><span class="en">Robotics</span><span class="ru">Робототехника</span><span class="kz">Робототехника</span></span>
+                <span class="pk"><span class="en">9 years</span><span class="ru">9 лет</span><span class="kz">9 жас</span></span>
+                <span class="pk"><span class="en">Esil</span><span class="ru">Есиль</span><span class="kz">Есіл</span></span>
+                <span class="pk"><span class="en">Budget set</span><span class="ru">Бюджет задан</span><span class="kz">Бюджет белгіленді</span></span>
+              </div>
+              <div class="bub"><span class="en">Found centers near you:</span><span class="ru">Нашёл центры рядом:</span><span class="kz">Жақын орталықтар табылды:</span></div>
+              <div class="ccard">
+                <div class="ct"><span class="en">Robotics studio</span><span class="ru">Студия робототехники</span><span class="kz">Робототехника студиясы</span></div>
+                <div class="cs"><span class="en">Esil · ages 7–12</span><span class="ru">Есиль · 7–12 лет</span><span class="kz">Есіл · 7–12 жас</span></div>
+                <div class="st"><i></i><span class="en">Candidate · data pending verification</span><span class="ru">Кандидат · данные на верификации</span><span class="kz">Кандидат · деректері тексерілуде</span></div>
+                <div class="acts"><span class="a p"><span class="en">Contacts</span><span class="ru">Контакты</span><span class="kz">Байланыс</span></span><span class="a"><span class="en">On the map</span><span class="ru">На карте</span><span class="kz">Картада</span></span></div>
+              </div>
+            </div>
+            <div class="ex"><span class="en">Sample dialogue</span><span class="ru">Пример диалога</span><span class="kz">Диалог үлгісі</span></div>
+          </div>
+        </div>
+      </div>
     </div>
     <p class="map-cap"><span class="en"><strong>Özen means “river” in Kazakh.</strong> Each dot is one of the 134 education centers in our database; verification is in progress. A schematic of Astana, not to scale.</span><span class="ru"><strong>Өзен по-казахски — «река».</strong> Каждая точка — один из 134 образовательных центров в нашей базе; верификация идёт. Схема Астаны, без масштаба.</span><span class="kz"><strong>Өзен — жобаның атауы да, бейнесі де.</strong> Әр нүкте — дерекқорымыздағы 134 білім беру орталығының бірі; тексеру жүріп жатыр. Астананың сызбасы, масштабсыз.</span></p>
    </div>
@@ -297,6 +505,12 @@ footer .desc{margin-top:8px}
     <p class="sec-lede"><span class="en">OZI collects, verifies, and structures what matters to families — subjects, ages, prices, schedules, locations — and delivers it where parents already are.</span><span class="ru">OZI собирает, проверяет и структурирует главное для семьи — направления, возраст, цены, расписание, локации — и отдаёт их там, где родители уже есть.</span><span class="kz">OZI отбасы үшін маңыздыны жинайды, тексереді және құрылымдайды — бағыттар, жас, баға, кесте, орналасу — және оны ата-аналар жүрген жерде ұсынады.</span></p>
     <div class="cards3">
       <div class="pcard">
+        <div class="pvis pv-bot" aria-hidden="true"><div class="steps4">
+          <div><i>1</i><span class="en">Subject</span><span class="ru">Направление</span><span class="kz">Бағыт</span></div>
+          <div><i>2</i><span class="en">Age</span><span class="ru">Возраст</span><span class="kz">Жас</span></div>
+          <div><i>3</i><span class="en">District</span><span class="ru">Район</span><span class="kz">Аудан</span></div>
+          <div><i>4</i><span class="en">Budget</span><span class="ru">Бюджет</span><span class="kz">Бюджет</span></div>
+        </div></div>
         <div class="role"><span class="en">For parents</span><span class="ru">Для родителей</span><span class="kz">Ата-аналарға</span></div>
         <h3>OZI Bot</h3>
         <p><span class="en">Telegram search in four steps: subject → age → district → budget. Cards of verified centers with contacts, schedules, and prices.</span><span class="ru">Поиск в Telegram за четыре шага: направление → возраст → район → бюджет. Карточки проверенных центров с контактами, расписанием и ценами.</span><span class="kz">Telegram-де төрт қадаммен іздеу: бағыт → жас → аудан → бюджет. Байланысы, кестесі және бағасы бар тексерілген орталықтардың карточкалары.</span></p>
@@ -305,6 +519,10 @@ footer .desc{margin-top:8px}
         </a></div>
       </div>
       <div class="pcard">
+        <div class="pvis pv-partner" aria-hidden="true"><div class="mini">
+          <div class="ln t"></div><div class="ln s"></div><div class="ln x"></div>
+          <div class="ok"><i></i><span class="en">Data confirmed</span><span class="ru">Данные подтверждены</span><span class="kz">Деректер расталды</span></div>
+        </div></div>
         <div class="role"><span class="en">For centers</span><span class="ru">Для центров</span><span class="kz">Орталықтарға</span></div>
         <h3>OZI Partner</h3>
         <p><span class="en">A center's own cabinet: keep your card up to date, receive parent requests, build trust through verification.</span><span class="ru">Кабинет центра: самообновление карточки, получение заявок родителей, доверие через верификацию.</span><span class="kz">Орталықтың жеке кабинеті: карточкаңызды жаңартып отырыңыз, ата-аналардың өтінімдерін қабылдаңыз, тексеру арқылы сенім қалыптастырыңыз.</span></p>
@@ -313,6 +531,9 @@ footer .desc{margin-top:8px}
         </a></div>
       </div>
       <div class="pcard">
+        <div class="pvis pv-bridge" aria-hidden="true"><div class="bars">
+          <div style="height:100%"><b>82</b></div><div style="height:29%"><b>24</b></div><div style="height:21%"><b>17</b></div><div style="height:13%"><b>11</b></div>
+        </div><div class="pvcap"><span class="en">Centers by district</span><span class="ru">Центры по районам</span><span class="kz">Аудандар бойынша орталықтар</span></div></div>
         <div class="role"><span class="en">For the team & the city</span><span class="ru">Для команды и города</span><span class="kz">Команда мен қалаға</span></div>
         <h3>OZI Bridge</h3>
         <p><span class="en">Analytics over the whole market: supply, demand, and a district-level map of deficit in children's education access.</span><span class="ru">Аналитика всего рынка: спрос, предложение и карта дефицита доступа к детскому образованию по районам.</span><span class="kz">Бүкіл нарық бойынша аналитика: ұсыныс, сұраныс және балалар біліміне қолжетімділік тапшылығының аудандық картасы.</span></p>
@@ -533,6 +754,41 @@ footer .desc{margin-top:8px}
         c.setAttribute('class','cdot'); c.style.animationDelay=(1.1+di*0.35+made*0.012).toFixed(2)+'s';
         g.appendChild(c);
       }
+    });
+  })();
+</script>
+<script>
+  // Depth: pointer parallax on the hero stage, blocks rising in, numbers counting up.
+  (function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var stage=document.getElementById('stage'), hero=document.querySelector('.hero');
+    if(stage && hero && !reduce && window.matchMedia('(pointer:fine)').matches){
+      hero.addEventListener('pointermove',function(e){
+        var r=hero.getBoundingClientRect();
+        stage.style.setProperty('--mx',((e.clientX-r.left)/r.width*2-1).toFixed(3));
+        stage.style.setProperty('--my',((e.clientY-r.top)/r.height*2-1).toFixed(3));
+      });
+      hero.addEventListener('pointerleave',function(){stage.style.setProperty('--mx',0);stage.style.setProperty('--my',0);});
+    }
+    var els=document.querySelectorAll('.band p,.pcard,.vgrid,.eco,.stats,.path li,.person,.jcard,.bcard,.contact');
+    function count(el){
+      var t=el.textContent.trim(); if(!/^\d+$/.test(t)||reduce) return;
+      var end=+t, t0=null; el.textContent='0';
+      function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/1100); el.textContent=Math.round(end*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+    if(!('IntersectionObserver' in window)){ return; }
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(!x.isIntersecting) return;
+        x.target.classList.add('in'); io.unobserve(x.target);
+        x.target.querySelectorAll('.stat-num').forEach(count);
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el,i){
+      el.classList.add('rise');
+      var sib=Array.prototype.indexOf.call(el.parentNode.children,el);
+      el.style.transitionDelay=(Math.min(sib,4)*70)+'ms';
+      io.observe(el);
     });
   })();
 </script>
