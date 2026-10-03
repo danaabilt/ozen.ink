@@ -375,6 +375,93 @@ html.js .rise.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2
 html.js .pcard.rise.in:hover{transform:translateY(-6px)}
 html.js .jcard.rise.in:hover{transform:translateY(-5px)}
 @media(prefers-reduced-motion:reduce){html.js .rise{opacity:1;transform:none}}
+
+/* ───────── light, warm, product-first ───────── */
+header{background:rgba(251,250,247,.88);border-bottom:1px solid var(--line)}
+.brand{color:var(--ink)}.brand .dot{color:var(--gold)}
+.nav-links a{color:var(--ink);opacity:.8}.nav-links a:hover{color:var(--teal);opacity:1}
+.lang{border-color:var(--line)}.lang button{color:var(--muted)}.lang button.active{background:var(--teal);color:#fff}
+.hero{background:var(--paper);color:var(--ink);padding:52px 0 170px}
+.hero::after{display:none}
+.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.hero .kicker{background:var(--teal-soft);color:var(--teal-deep);border:0;font-weight:600;font-size:13px;backdrop-filter:none}
+.hero .kicker .pulse{background:var(--teal);animation:pulse2 2.4s infinite}
+@keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(14,124,123,.45)}70%{box-shadow:0 0 0 11px rgba(14,124,123,0)}100%{box-shadow:0 0 0 0 rgba(14,124,123,0)}}
+.hero h1{color:var(--ink);text-shadow:none;font-size:clamp(46px,7vw,98px)}
+.hero h1 .oz{color:var(--teal)}.hero h1 .dot{color:var(--gold)}
+.hero .tag{color:var(--ink)}.hero .lede{color:var(--muted)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 16px 34px -12px rgba(14,124,123,.7)}.btn-primary:hover{background:var(--teal-deep)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink);backdrop-filter:none}.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+
+.scene{position:relative;height:610px}
+.blob{position:absolute;right:-300px;top:-170px;width:860px;height:860px;border-radius:46% 54% 58% 42%/48% 44% 56% 52%;background:radial-gradient(circle at 30% 24%,#19a7a3,var(--teal) 52%,var(--teal-deep))}
+.blob-g{position:absolute;left:-30px;bottom:-150px;width:320px;height:320px;border-radius:50%;background:#F1DDB2}
+.wave{position:absolute;right:-300px;top:250px;width:860px;height:auto;opacity:.5}
+.scene .phone{position:absolute;left:50%;top:26px;margin-left:-150px;width:300px;transform:rotate(4deg);animation:floaty2 7s ease-in-out infinite;background:var(--ink);box-shadow:0 60px 100px -30px rgba(20,35,31,.6),0 0 0 1px rgba(255,255,255,.2)}
+@keyframes floaty2{50%{transform:rotate(4deg) translateY(-10px)}}
+.screen{font-size:13.5px}
+.fcard{position:absolute;z-index:3;background:#fff;border-radius:22px;padding:15px 20px 16px;box-shadow:0 26px 54px -20px rgba(20,35,31,.45);font-size:14.5px;color:var(--muted);line-height:1.3;max-width:190px}
+.fcard b{display:block;font-family:var(--display);font-weight:600;font-size:34px;color:var(--teal);letter-spacing:-.03em;line-height:1.1}
+.f1{right:-6px;top:86px}.f2{left:0;top:360px}.f3{right:0;bottom:36px}
+@media(max-width:940px){
+  .hero-grid{grid-template-columns:1fr}.hero{padding:40px 0 130px}
+  .scene{height:560px}.blob{right:-420px;top:-90px}.wave{display:none}
+  .scene .phone{width:270px;margin-left:-135px}
+  .f1{right:-4px;top:40px}.f2{left:-4px;top:330px}.f3{right:-4px;bottom:10px}
+}
+@media(prefers-reduced-motion:reduce){.scene .phone{animation:none}}
+
+/* entry points: the three doors */
+.entry{position:relative;z-index:3;margin-top:-104px}
+.entry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.door{display:flex;flex-direction:column;gap:8px;padding:26px 26px 24px;border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-2);text-decoration:none;color:var(--ink);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.door:hover{transform:translateY(-6px)}
+.door .who{font-size:13.5px;font-weight:600;color:var(--muted)}
+.door .nm{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.02em;color:var(--teal)}
+.door .ds{font-size:15px;color:var(--muted);flex:1}
+.door .go{margin-top:10px;display:inline-flex;align-self:flex-start;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;background:var(--teal-soft);color:var(--teal-deep);font-weight:600;font-size:14.5px}
+.door.main{background:var(--teal);border-color:var(--teal);color:#fff}
+.door.main .who{color:#cfeceb}.door.main .nm{color:#fff}.door.main .ds{color:#e6f4f3}.door.main .go{background:#fff;color:var(--teal-deep)}
+.door.oz{background:var(--ink);border-color:var(--ink);color:#fff}
+.door.oz .who{color:#b9c7c3}.door.oz .nm{color:var(--gold-lit)}.door.oz .ds{color:#d5e0dd}.door.oz .go{background:var(--gold-lit);color:var(--ink)}
+@media(max-width:860px){.entry-grid{grid-template-columns:1fr}.entry{margin-top:-84px}}
+
+/* what OZI is, what ÖZEN is */
+#what{border-top:0;padding-top:96px}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.wcard{border-radius:28px;padding:36px;position:relative;overflow:hidden}
+.wcard.ozi{background:#fff;border:1px solid var(--line);box-shadow:var(--sh-1)}
+.wcard.ozen{background:radial-gradient(420px 300px at 100% 0%,rgba(79,196,192,.3),transparent 70%),var(--ink);color:#fff;box-shadow:var(--sh-2)}
+.wcard .wq{font-size:15px;font-weight:600;color:var(--gold)}
+.wcard.ozen .wq{color:var(--gold-lit)}
+.wcard h3{font-size:clamp(30px,3.6vw,44px);font-weight:700;letter-spacing:-.03em;margin:8px 0 14px;color:var(--teal)}
+.wcard.ozen h3{color:#fff}
+.wcard p{font-size:16.5px;color:var(--muted);max-width:44ch}
+.wcard.ozen p{color:#d5e0dd}
+.wcard ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+.wcard li{display:flex;gap:12px;align-items:baseline;font-size:15.5px}
+.wcard li b{font-family:var(--display);font-weight:600;font-size:13.5px;min-width:96px;color:var(--teal)}
+.wcard.ozen li b{color:var(--teal-lit)}
+.wcard.ozen li{color:#e9f1ef}
+.wstate{display:inline-block;margin-top:22px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:12px;background:var(--teal-soft);color:var(--teal-deep)}
+.wcard.ozen .wstate{background:rgba(255,255,255,.12);color:#fff}
+.wbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.wbtns a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;background:var(--teal);color:#fff}
+.wbtns a.alt{background:var(--teal-soft);color:var(--teal-deep)}
+.wcard.ozen .wbtns a{background:var(--gold-lit);color:var(--ink)}
+.wcard.ozen::before{content:"";position:absolute;right:-50px;bottom:-60px;width:260px;height:260px;opacity:.16;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpolygon points='100,10 178,55 178,145 100,190 22,145 22,55'/%3E%3Cpolygon points='100,40 152,70 152,130 100,160 48,130 48,70'/%3E%3Cpolygon points='100,70 126,85 126,115 100,130 74,115 74,85'/%3E%3Cpath d='M100 10V190M22 55l156 90M178 55L22 145'/%3E%3C/svg%3E") center/contain no-repeat}
+.wcard > *{position:relative}
+.river-note{margin-top:28px;font-size:16px;color:var(--muted);max-width:60ch}
+.river-note b{color:var(--ink);font-weight:600}
+@media(max-width:860px){.what-grid{grid-template-columns:1fr}.wcard{padding:28px 24px}}
+.band{padding-top:40px}
+
+/* stats: light card */
+#status .stats{background:#fff;border:1px solid var(--line);box-shadow:var(--sh-1)}
+#status .stats::after{display:none}
+#status .stat{border-top:1px solid var(--line)}
+#status .stat-num{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--teal)}
+#status .stat-lbl{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -415,38 +502,16 @@ html.js .jcard.rise.in:hover{transform:translateY(-5px)}
       <span class="ru">Социальный проект из Астаны, который строится открыто и без внешних вложений. OZI — верифицированный навигатор детских образовательных центров в Telegram, канале, который уже есть у каждого родителя. Без установки приложений, без порога входа. Это первый шаг к ÖZEN — большой экосистеме развития ребёнка.</span><span class="kz">Астанадан шыққан, ашық әрі сыртқы қаржыландырусыз құрылып жатқан әлеуметтік жоба. OZI — балаларға арналған білім беру орталықтарының тексерілген навигаторы, оны әр ата-ана күнделікті қолданатын Telegram арқылы ұсынады. Қосымша орнатудың қажеті жоқ, кіру кедергісі жоқ. Бұл — ÖZEN-ге, баланың дамуының үлкен экожүйесіне қарай алғашқы қадам.</span>
     </p>
     <div class="hero-cta">
-      <a href="#product" class="btn btn-primary"><span class="en">See how it works</span><span class="ru">Как это работает</span><span class="kz">Қалай жұмыс істейді</span></a>
-      <a href="https://t.me/OZIkids_bot" target="_blank" rel="noopener" class="btn btn-ghost"><span class="en">Open the OZI bot</span><span class="ru">Открыть бот OZI</span><span class="kz">OZI ботын ашу</span></a>
+      <a href="https://t.me/OZIkids_bot" target="_blank" rel="noopener" class="btn btn-primary"><span class="en">Open the OZI bot</span><span class="ru">Открыть бот OZI</span><span class="kz">OZI ботын ашу</span></a>
+      <a href="#product" class="btn btn-ghost"><span class="en">See how it works</span><span class="ru">Как это работает</span><span class="kz">Қалай жұмыс істейді</span></a>
       <a href="#contact" class="btn btn-ghost"><span class="en">Get in touch</span><span class="ru">Связаться</span><span class="kz">Байланысу</span></a>
     </div>
    </div>
    <div class="hero-map">
-    <div class="stage" id="stage">
-      <div class="layer l-plane">
-        <div class="plane">
-          <svg viewBox="0 0 520 440" role="img" aria-label="Schematic of Astana: the Esil river and 134 mapped education centers in four districts">
-            <defs>
-              <filter id="rglow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
-              <filter id="dglow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <pattern id="pgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path class="gridline" d="M40 0H0V40" fill="none"/></pattern>
-              <clipPath id="pclip"><rect width="520" height="440" rx="27"/></clipPath>
-            </defs>
-            <g clip-path="url(#pclip)">
-              <rect width="520" height="440" fill="url(#pgrid)"/>
-              <path class="river" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
-              <path class="river-core" pathLength="1" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
-              <path class="river-flow" pathLength="1" d="M 545 150 C 450 118, 405 232, 300 214 S 172 150, 92 236 S 12 300, -25 288"/>
-              <g id="cdots"></g>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="dchip d1"><b>24</b><span class="en">Almaty district</span><span class="ru">Алматинский</span><span class="kz">Алматы ауданы</span></div>
-      <div class="dchip d2"><b>17</b><span class="en">Saryarka, Baykonur</span><span class="ru">Сарыарка, Байконур</span><span class="kz">Сарыарқа, Байқоңыр</span></div>
-      <div class="dchip d3"><b>82</b><span class="en">Esil district</span><span class="ru">Есиль</span><span class="kz">Есіл ауданы</span></div>
-      <div class="dchip d4"><b>11</b><span class="en">Nura district</span><span class="ru">Нура</span><span class="kz">Нұра ауданы</span></div>
-      <div class="rchip"><span class="en">Esil river</span><span class="ru">река Есиль</span><span class="kz">Есіл өзені</span></div>
-      <div class="layer l-phone" aria-hidden="true">
+    <div class="scene">
+      <div class="blob"></div><div class="blob-g"></div>
+      <svg class="wave" viewBox="0 0 860 200" aria-hidden="true"><path d="M0 120 C 150 40, 260 190, 430 110 S 720 30, 860 100" fill="none" stroke="#9FE8E4" stroke-width="3" stroke-linecap="round"/></svg>
+      <div aria-hidden="true">
         <div class="phone">
           <div class="screen">
             <div class="tg-top"><div class="tg-av">OZI</div><div><div class="tg-name">OZI Bot</div><div class="tg-sub"><span class="en">bot</span><span class="ru">бот</span><span class="kz">бот</span></div></div></div>
@@ -470,11 +535,70 @@ html.js .jcard.rise.in:hover{transform:translateY(-5px)}
           </div>
         </div>
       </div>
+      <div class="fcard f1"><b>134</b><span class="en">centers in the database</span><span class="ru">центра в базе</span><span class="kz">орталық дерекқорда</span></div>
+      <div class="fcard f2"><b>4</b><span class="en">districts of Astana</span><span class="ru">района Астаны</span><span class="kz">Астана ауданы</span></div>
+      <div class="fcard f3"><b>3</b><span class="en">bots over one database</span><span class="ru">бота над одной базой</span><span class="kz">бот бір дерекқорда</span></div>
     </div>
-    <p class="map-cap"><span class="en"><strong>Özen means “river” in Kazakh.</strong> Each dot is one of the 134 education centers in our database; verification is in progress. A schematic of Astana, not to scale.</span><span class="ru"><strong>Өзен по-казахски — «река».</strong> Каждая точка — один из 134 образовательных центров в нашей базе; верификация идёт. Схема Астаны, без масштаба.</span><span class="kz"><strong>Өзен — жобаның атауы да, бейнесі де.</strong> Әр нүкте — дерекқорымыздағы 134 білім беру орталығының бірі; тексеру жүріп жатыр. Астананың сызбасы, масштабсыз.</span></p>
    </div>
   </div>
 </div>
+
+<!-- ENTRY POINTS -->
+<div class="entry">
+  <div class="wrap entry-grid">
+    <a class="door main" href="https://t.me/OZIkids_bot" target="_blank" rel="noopener">
+      <span class="who"><span class="en">For parents</span><span class="ru">Родителям</span><span class="kz">Ата-аналарға</span></span>
+      <span class="nm">OZI Bot</span>
+      <span class="ds"><span class="en">Find a class for your child in Telegram, in four steps.</span><span class="ru">Найдите ребёнку кружок в Telegram за четыре шага.</span><span class="kz">Балаңызға үйірмені Telegram-де төрт қадаммен табыңыз.</span></span>
+      <span class="go"><span class="en">Open the bot</span><span class="ru">Открыть бот</span><span class="kz">Ботты ашу</span></span>
+    </a>
+    <a class="door" href="https://t.me/OZIpartner_bot" target="_blank" rel="noopener">
+      <span class="who"><span class="en">For centers</span><span class="ru">Центрам</span><span class="kz">Орталықтарға</span></span>
+      <span class="nm">OZI Partner</span>
+      <span class="ds"><span class="en">Claim your center's card, confirm the data, receive parent requests.</span><span class="ru">Заберите карточку центра, подтвердите данные, получайте заявки родителей.</span><span class="kz">Орталық карточкасын алыңыз, деректерді растаңыз, ата-аналар өтінімін қабылдаңыз.</span></span>
+      <span class="go"><span class="en">Open the cabinet</span><span class="ru">Открыть кабинет</span><span class="kz">Кабинетті ашу</span></span>
+    </a>
+    <a class="door oz" href="demo/">
+      <span class="who"><span class="en">Prototype</span><span class="ru">Прототип</span><span class="kz">Прототип</span></span>
+      <span class="nm">ÖZEN</span>
+      <span class="ds"><span class="en">Six steps to a first profile of your child. A demo with sample questions.</span><span class="ru">Шесть шагов до первого профиля ребёнка. Демо с условными вопросами.</span><span class="kz">Баланың алғашқы профиліне дейін алты қадам. Шартты сұрақтары бар демо.</span></span>
+      <span class="go"><span class="en">Open the demo</span><span class="ru">Открыть демо</span><span class="kz">Демоны ашу</span></span>
+    </a>
+  </div>
+</div>
+
+<!-- WHAT IS OZI / ÖZEN -->
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow">OZI<span style="color:var(--ink)">.</span>ÖZEN</div>
+    <h2><span class="en">What OZI is, and what ÖZEN is</span><span class="ru">Что такое OZI и что такое ÖZEN</span><span class="kz">OZI деген не, ÖZEN деген не</span></h2>
+    <div class="what-grid">
+      <div class="wcard ozi">
+        <div class="wq"><span class="en">“Where exactly?”</span><span class="ru">«Где именно?»</span><span class="kz">«Нақ қайда?»</span></div>
+        <h3>OZI</h3>
+        <p><span class="en">A verified navigator of children's education centers in Astana, right inside Telegram. It already works: three bots over one database.</span><span class="ru">Верифицированный навигатор детских образовательных центров Астаны прямо в Telegram. Работает уже сейчас: три бота над одной базой.</span><span class="kz">Астанадағы балалар білім беру орталықтарының тексерілген навигаторы, тікелей Telegram-де. Қазірдің өзінде жұмыс істейді: бір дерекқор үстінде үш бот.</span></p>
+        <span class="wstate"><span class="en">Working MVP, launching in Astana</span><span class="ru">Работающий MVP, запуск в Астане</span><span class="kz">Жұмыс істейтін MVP, Астанада іске қосылуда</span></span>
+        <div class="wbtns">
+          <a href="https://t.me/OZIkids_bot" target="_blank" rel="noopener"><span class="en">Bot for parents</span><span class="ru">Бот для родителей</span><span class="kz">Ата-аналарға арналған бот</span></a>
+          <a class="alt" href="https://t.me/OZIpartner_bot" target="_blank" rel="noopener"><span class="en">Bot for centers</span><span class="ru">Бот для центров</span><span class="kz">Орталықтарға арналған бот</span></a>
+        </div>
+      </div>
+      <div class="wcard ozen">
+        <div class="wq"><span class="en">“Who is my child, and where to lead them?”</span><span class="ru">«Кто мой ребёнок и куда его вести?»</span><span class="kz">«Балам кім және оны қайда бағыттау керек?»</span></div>
+        <h3>ÖZEN</h3>
+        <p><span class="en">A family navigator of a child's development. Not a test and not a diagnosis: it helps a parent see the child's strengths and choose where to invest time.</span><span class="ru">Семейный навигатор развития ребёнка. Не тест и не диагноз: помогает родителю увидеть сильные стороны ребёнка и выбрать, куда вложить время.</span><span class="kz">Баланың дамуына арналған отбасылық навигатор. Тест те, диагноз да емес: ата-анаға баланың күшті жақтарын көріп, уақытты қайда салуды таңдауға көмектеседі.</span></p>
+        <ul>
+          <li><b><span class="en">Profile</span><span class="ru">Профиль</span><span class="kz">Профиль</span></b><span><span class="en">who my child is</span><span class="ru">кто мой ребёнок</span><span class="kz">балам кім</span></span></li>
+          <li><b><span class="en">Strategy</span><span class="ru">Стратегия</span><span class="kz">Стратегия</span></b><span><span class="en">where to invest time</span><span class="ru">куда вложить время</span><span class="kz">уақытты қайда салу керек</span></span></li>
+          <li><b><span class="en">Environment</span><span class="ru">Среда</span><span class="kz">Орта</span></b><span><span class="en">where to do it — this is OZI</span><span class="ru">где это делать — это OZI</span><span class="kz">оны қайда істеу керек — бұл OZI</span></span></li>
+        </ul>
+        <span class="wstate"><span class="en">In development, demo open</span><span class="ru">В разработке, демо открыто</span><span class="kz">Әзірленуде, демо ашық</span></span>
+        <div class="wbtns"><a href="demo/"><span class="en">Open the ÖZEN demo</span><span class="ru">Открыть демо ÖZEN</span><span class="kz">ÖZEN демосын ашу</span></a></div>
+      </div>
+    </div>
+    <p class="river-note"><span class="en"><b>Özen means “river” in Kazakh.</b> Every child is a stream with a course of their own; our job is to help find it, not to redirect it.</span><span class="ru"><b>Өзен по-казахски — «река».</b> Каждый ребёнок — это поток со своим руслом; наша задача — помочь его найти, а не направить в чужое.</span><span class="kz"><b>Өзен — жобаның атауы да, мәні де.</b> Әр бала — өз арнасы бар ағыс; біздің міндет — оны табуға көмектесу, бөгде арнаға бұру емес.</span></p>
+  </div>
+</section>
 
 <!-- SOCIAL BAND -->
 <div class="band">
@@ -770,7 +894,7 @@ html.js .jcard.rise.in:hover{transform:translateY(-5px)}
       });
       hero.addEventListener('pointerleave',function(){stage.style.setProperty('--mx',0);stage.style.setProperty('--my',0);});
     }
-    var els=document.querySelectorAll('.band p,.pcard,.vgrid,.eco,.stats,.path li,.person,.jcard,.bcard,.contact');
+    var els=document.querySelectorAll('.door,.wcard,.band p,.pcard,.vgrid,.eco,.stats,.path li,.person,.jcard,.bcard,.contact');
     function count(el){
       var t=el.textContent.trim(); if(!/^\d+$/.test(t)||reduce) return;
       var end=+t, t0=null; el.textContent='0';
