@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ÖZEN — демо MVP</title>
 <meta name="description" content="ÖZEN — демо-версия MVP: профиль ребёнка 10–14 лет глазами родителя. Прототип с демо-вопросами.">
-<meta name="theme-color" content="#0E7C7B">
+<meta name="theme-color" content="#15803D">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
 <style>
-:root{--teal:#0E7C7B;--teal-d:#0A5F5E;--gold:#C08A2D;--ink:#14231F;--paper:#FBFAF7;--line:#E3E0D8;--mute:#4A5A55;--card:#FFFFFF;--tag:#F1E4C8}
+:root{--teal:#15803D;--teal-d:#14532D;--gold:#A16207;--ink:#0F2A1D;--paper:#FAFCF5;--line:#DDE7D6;--mute:#4B5A4E;--card:#FFFFFF;--tag:#FEF3C7}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{background:#ECE9E1;color:var(--ink);font-family:'Golos Text',system-ui,sans-serif;font-size:16px;line-height:1.45}
@@ -47,7 +47,7 @@ label.chk input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--teal);f
 .note{font-size:13px;padding:10px 12px;border-radius:8px;background:var(--tag)}
 .q{font-size:20px;font-weight:600;line-height:1.35}
 .opt{min-height:50px;padding:0 16px;border-radius:12px;font-size:16px;text-align:left;border:1px solid #9AA6A1;background:#fff;color:var(--ink);width:100%}
-.opt[aria-pressed=true]{border:2px solid var(--teal);background:#E2F0EF;font-weight:600}
+.opt[aria-pressed=true]{border:2px solid var(--teal);background:#E3F4E4;font-weight:600}
 .opts{display:flex;flex-direction:column;gap:10px}
 .steps div{display:flex;gap:12px;align-items:center}
 .dot{width:12px;height:12px;border-radius:6px;background:var(--teal);flex-shrink:0}
@@ -230,12 +230,12 @@ footer a{color:var(--teal)}
       }).join('');
       var dots = pts.map(function (p, i) {
         return i < 4
-          ? '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="5" fill="#0E7C7B"/>'
-          : '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="5" fill="#fff" stroke="#0E7C7B" stroke-width="2"/>';
+          ? '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="5" fill="#15803D"/>'
+          : '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="5" fill="#fff" stroke="#15803D" stroke-width="2"/>';
       }).join('');
       var nums = [0, 1, 2, 3, 4, 5].map(function (i) {
         var p = pt(i, 1.17);
-        return '<text x="' + p[0].toFixed(1) + '" y="' + (p[1] + 5).toFixed(1) + '" font-size="14" font-weight="600" fill="#14231F" text-anchor="middle">' + (i + 1) + '</text>';
+        return '<text x="' + p[0].toFixed(1) + '" y="' + (p[1] + 5).toFixed(1) + '" font-size="14" font-weight="600" fill="#0F2A1D" text-anchor="middle">' + (i + 1) + '</text>';
       }).join('');
       var rows = AXES.map(function (name, i) {
         var text = '';
@@ -252,7 +252,7 @@ footer a{color:var(--teal)}
         '<polygon points="' + ring(1) + '" fill="none" stroke="#9AA6A1"/>' +
         '<polygon points="' + ring(0.66) + '" fill="none" stroke="#D5D2C9"/>' +
         '<polygon points="' + ring(0.33) + '" fill="none" stroke="#D5D2C9"/>' + grid +
-        '<polygon points="' + poly + '" fill="rgba(14,124,123,0.18)" stroke="#0E7C7B" stroke-width="2" stroke-linejoin="round"/>' + dots + nums +
+        '<polygon points="' + poly + '" fill="rgba(21,128,61,0.18)" stroke="#15803D" stroke-width="2" stroke-linejoin="round"/>' + dots + nums +
         '</svg></div>' +
         '<p class="small">Форма показывает, как проявляется каждая ось. Дальше от центра не значит «лучше». Общего балла нет.</p>' +
         '<div class="rows">' + rows + '</div>' +
