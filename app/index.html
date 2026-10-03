@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ÖZEN — приложение</title>
+<meta name="description" content="ÖZEN — пилотная версия приложения для родителей: целостный профиль ребёнка 10–14 лет и маршрут развития. Данные хранятся только на вашем устройстве.">
+<meta name="theme-color" content="#0E7C7B">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ÖZEN">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
+<style>
+:root{--teal:#0E7C7B;--teal-d:#0A5F5E;--teal-l:#E2F0EF;--gold:#C08A2D;--ink:#14231F;--paper:#FBFAF7;--line:#E3E0D8;--mute:#4A5A55;--card:#FFFFFF;--tag:#F1E4C8;--edge:#9AA6A1}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:#ECE9E1;color:var(--ink);font-family:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.45;-webkit-text-size-adjust:100%}
+.shell{max-width:480px;min-height:100%;margin:0 auto;background:var(--paper);display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top));border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper);z-index:3}
+.logo{font-family:'Unbounded',sans-serif;font-weight:600;font-size:18px;color:var(--teal);text-decoration:none}
+.hd{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);min-width:0}
+.hd span.who{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tag{font-size:11px;font-weight:600;letter-spacing:.06em;padding:4px 8px;border-radius:4px;background:var(--tag);color:var(--ink);white-space:nowrap}
+main{flex:1;display:flex;flex-direction:column;gap:16px;padding:20px 16px 28px}
+h1{font-family:'Unbounded',sans-serif;font-weight:600;font-size:22px;line-height:1.25;margin:0}
+h1.big{font-size:28px;margin-top:12px}
+h2{font-size:17px;font-weight:600;margin:6px 0 0}
+p{margin:0}
+a{color:var(--teal)}
+.mute{color:var(--mute);font-size:14px}
+.small{font-size:13px;color:var(--mute)}
+.card{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.card b{font-weight:600}
+.card.pot{border-color:var(--gold);border-left-width:4px}
+.card.att{border-color:var(--edge);background:#F4F2EC}
+.grow{flex:1}
+button{font-family:inherit;cursor:pointer;color:var(--ink)}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 16px;border:none;border-radius:12px;background:var(--teal);color:#fff;font-size:17px;font-weight:600;width:100%;text-decoration:none;text-align:center}
+.btn:hover{background:var(--teal-d)}
+.btn[disabled]{background:#D5D2C9;color:var(--mute);cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--teal);min-height:48px;font-size:16px}
+.btn.warn{background:transparent;color:#8A3B2A;border:1px solid #8A3B2A;min-height:48px;font-size:16px}
+.link{min-height:44px;border:none;background:transparent;color:var(--teal);font-size:15px;font-weight:500;width:100%}
+label.f{display:flex;flex-direction:column;gap:8px;font-weight:500;font-size:14px}
+input[type=text],select,textarea{min-height:48px;padding:12px 14px;border:1px solid var(--edge);border-radius:10px;font-size:16px;font-family:inherit;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical;line-height:1.4}
+textarea.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;min-height:90px;word-break:break-all}
+label.chk{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+label.chk input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--teal);flex-shrink:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;padding:0 14px;border-radius:21px;font-size:15px;border:1px solid var(--edge);background:#fff}
+.chip[aria-pressed=true]{border:2px solid var(--teal);background:var(--teal);color:#fff;font-weight:600}
+.bar{height:6px;border-radius:3px;background:var(--line)}
+.bar i{display:block;height:6px;border-radius:3px;background:var(--teal)}
+.note{font-size:13px;padding:10px 12px;border-radius:8px;background:var(--tag)}
+.q{font-size:20px;font-weight:600;line-height:1.35}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{min-height:50px;padding:10px 16px;border-radius:12px;font-size:16px;text-align:left;border:1px solid var(--edge);background:#fff;width:100%}
+.opt[aria-pressed=true]{border:2px solid var(--teal);background:var(--teal-l);font-weight:600}
+.steps{gap:12px}
+.steps div{display:flex;gap:12px;align-items:center}
+.dot{width:12px;height:12px;border-radius:6px;background:var(--teal);flex-shrink:0}
+.dot.cur{background:transparent;border:2px solid var(--teal)}
+.dot.off{background:transparent;border:2px solid var(--edge)}
+.rows{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px;border-bottom:1px solid #EFEDE6;width:100%;background:#fff;border-left:none;border-right:none;border-top:none;text-align:left;font-size:16px;text-decoration:none;color:var(--ink)}
+.row:last-child{border-bottom:none}
+.row .arr{color:var(--edge);font-size:18px;flex-shrink:0}
+.row div{min-width:0}
+.segs{display:flex;gap:6px}
+.segs i{flex:1;height:8px;border-radius:4px;background:var(--line)}
+.segs i.on{background:var(--teal)}
+svg{display:block;width:100%;height:auto}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:13px;padding:4px 10px;border-radius:12px;background:var(--teal-l);color:var(--teal-d)}
+.pill.g{background:var(--tag);color:var(--ink)}
+.task{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #EFEDE6;cursor:pointer}
+.task:last-child{border-bottom:none;padding-bottom:0}
+.task:first-of-type{padding-top:0}
+.task input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--teal);flex-shrink:0}
+.task small{display:block;color:var(--mute);font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.entry{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.entry .top{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--mute)}
+.entry p{white-space:pre-wrap;overflow-wrap:anywhere}
+.x{border:none;background:transparent;color:var(--mute);font-size:13px;text-decoration:underline;padding:0;min-height:24px}
+.tl{display:flex;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.tl .hx{width:84px;flex-shrink:0}
+.help-n{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:600;color:var(--teal);text-decoration:none}
+nav.tabs{position:sticky;bottom:0;display:flex;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:3}
+nav.tabs[hidden]{display:none}
+nav.tabs button{flex:1;min-height:58px;border:none;background:transparent;font-size:12px;color:var(--mute);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+nav.tabs button[aria-current=page]{color:var(--teal);font-weight:600}
+nav.tabs svg{width:22px;height:22px}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;z-index:9;max-width:90%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.gold{color:var(--gold);font-weight:600}
+@media (prefers-reduced-motion:no-preference){main{animation:in .18s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+<a class="logo" href="#/home" aria-label="ÖZEN — на главный экран">ÖZEN</a>
+<div class="hd"><span class="who" id="who"></span><span class="tag">ПИЛОТ</span></div>
+</header>
+<main id="app"></main>
+<nav class="tabs" id="tabs" hidden></nav>
+</div>
+<noscript><p style="padding:20px">Для работы приложения нужен JavaScript.</p></noscript>
+<script src="method.js"></script>
+<script src="catalog.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
